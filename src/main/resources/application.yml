@@ -1,0 +1,58 @@
+# springboot
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600 # Session timeout. If a duration suffix is not specified, seconds are used.
+
+# SPRING 설정
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+#    url: jdbc:h2:tcp://localhost/~/test
+#    driver-class-name: org.h2.Driver
+    url: jdbc:log4jdbc:h2:tcp://localhost/~/test
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: sa
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: embedded  # Database schema initialization mode.
+      schema: classpath:org/springframework/session/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+      table-name: SPRING_SESSION # Name of the database table used to store sessions.
+
+
+security:
+  oauth2:
+    jwt:
+      signkey: vmsa@#$
+
+common:
+  # token-type : JWT or BEARER
+  token-type: JWT
+  client-id: gvpro
+  client-secret: gcat
+
+mybatis:
+  type-aliases-package: vmsa
+  config-location: classpath:sql-mapper-config.xml
+  mapper-locations: classpath:/sqlmap/**/*Mapper_SQL.xml
+
+logging:
+  level:
+    root: INFO
+    jdbc: OFF
+    jdbc.connection: OFF
+    jdbc.sqlonly: DEBUG
+    jdbc.sqltiming: DEBUG
+    jdbc.audit : OFF
+    jdbc.resultset : OFF
+    jdbc.resultsettable: DEBUG
+    org.springframework.web: DEBUG
+    com.zaxxer.hikari.HikariDataSource: ERROR
+
+

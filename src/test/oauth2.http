@@ -1,0 +1,4 @@
+http://localhost:8080/oauth/authorize?client_id=gvpro&redirect_uri=http://localhost:8080/oauth2/callback&response_type=code&scope=read
+
+###
+http://localhost:8080/oauth2/token/refresh?refreshToken=12822239-dbc2-4540-8d95-8d8f964ad6db

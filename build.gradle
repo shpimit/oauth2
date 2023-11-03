@@ -1,0 +1,57 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'vmsa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+// https://github.com/skysoo/oauth2-authentication-resource-client
+// https://velog.io/@skysoo/백엔드-개발자-로드맵-따라가기-10.-OAuth2.0
+dependencies {
+
+// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
+//	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.5.0.RELEASE'
+	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.8.RELEASE'
+//	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.8.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure
+//	implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.4.4'
+//	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.4'
+//	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.3.9.RELEASE'
+	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE'
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+
+//	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.4.4'
+	implementation 'org.springframework.session:spring-session-data-redis:2.4.2'
+
+// Mybatis Formatting Log
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	implementation 'org.projectlombok:lombok:1.18.18'
+
+	implementation 'com.google.code.gson:gson'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
+}

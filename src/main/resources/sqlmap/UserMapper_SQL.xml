@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vmsa.oauth2.service.mapper.UserMapper">
+
+    <select id="findByUsername" parameterType="String" resultType="vmsa.oauth2.service.impl.UserDetailsImpl">
+        SELECT
+            *
+          FROM USER
+        WHERE
+        <if test="username != null">"USERNAME" = #{username}</if>
+    </select>
+
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM USER
+        WHERE
+        <if test="value != null">"USERNAME" = #{username}</if>
+    </delete>
+
+    <insert id="insertUser" parameterType="vmsa.oauth2.service.impl.UserDetailsImpl">
+        INSERT INTO USER (
+            id
+            ,username
+            ,password
+            ,active
+            ,roles
+            ,permissions
+            ,user_type
+            ,createdate
+        ) VALUES (
+            #{id}
+            ,#{username}
+            ,#{password}
+            ,#{active}
+            ,#{roles}
+            ,#{permissions}
+            ,#{userType}
+            ,#{createdate}
+        )
+    </insert>
+
+    <insert id="insertAllUser" parameterType="java.util.Map">
+        INSERT INTO USER (
+            id
+            ,username
+            ,password
+            ,active
+            ,roles
+            ,permissions
+            ,user_type
+            ,createdate
+        ) VALUES
+        <foreach collection="users" item="userList" separator=" , ">
+        (
+            #{userList.id}
+            ,#{userList.username}
+            ,#{userList.password}
+            ,#{userList.active}
+            ,#{userList.roles}
+            ,#{userList.permissions}
+            ,#{userList.userType}
+            ,#{userList.createdate}
+        )
+        </foreach>
+    </insert>
+
+</mapper>

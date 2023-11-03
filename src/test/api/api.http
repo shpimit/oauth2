@@ -1,0 +1,29 @@
+POST http://localhost:8083/products
+Content-Type: application/json
+
+{
+  "id": "4",
+  "itemNO": "GD2020004",
+  "image": "xxxx",
+  "descriptionLoc": "안전화",
+  "materialClass": "공구",
+  "specification": "260",
+  "basicUnit": "EA",
+  "makerName": "아디다스",
+  "modelNO": "에어조단",
+  "originCountry": "東京",
+  "hsNO": "260360980",
+  "addUserID": "2279894"
+}
+
+###
+
+http://localhost:8080/oauth/authorize?client_id=gvpro&redirect_uri=http://localhost:8080/oauth2/callback&response_type=code&scope=read
+http://localhost:8300/oauth/authorize?client_id=gvpro&redirect_uri=http://localhost:8300/oauth2/callback&response_type=code&scope=read
+http://localhost:8300/oauth/authorize?client_id=gvpro&redirect_uri=/oauth2/callback&response_type=code&scope=read
+
+###
+Bearer
+http://localhost:8300/oauth2/token/refresh?refreshToken=fe2bad37-7f12-4f29-902f-f8b24a1b446e
+JWT
+http://localhost:8300/oauth2/token/refresh?refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzdW5obyIsInNjb3BlIjpbInJlYWQiXSwiYXRpIjoiM2E4OTk4ZTQtODhmOS00ODdiLTg0ZGYtNWJlYjcyN2RmZjc0IiwiZXhwIjoxNjE2Mzg2MTM5LCJhdXRob3JpdGllcyI6WyJVU0VSIiwiQURNSU4iXSwianRpIjoiYjEzOTdlNDYtNTVmMC00ZDI3LTk3Y2ItODVmZmNkYTZjM2ZhIiwiY2xpZW50X2lkIjoiZ3Zwcm8ifQ.sp5raP-SjFa1YdWIw___ChSv7A0d3TkseQFFn3PRQyc
